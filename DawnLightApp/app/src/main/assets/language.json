@@ -1,0 +1,691 @@
+{
+ "kind": "youtube#i18nLanguageListResponse",
+ "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/ffffopZj_Drij0w1C0d3rO-ySt8\"",
+ "items": [
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/UFpMECgEH8ob5h2trgLkdTuJOu8\"",
+   "id": "af",
+   "snippet": {
+    "hl": "af",
+    "name": "南非荷兰文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/E2mwDABX8bA82VW6950lUHybRnI\"",
+   "id": "az",
+   "snippet": {
+    "hl": "az",
+    "name": "阿塞拜疆文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/DxRwiev_mPIng_UpyQ-67j3-qjs\"",
+   "id": "id",
+   "snippet": {
+    "hl": "id",
+    "name": "印度尼西亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/4oBIfoJRGEpCDbZZwjRi3jZY7lk\"",
+   "id": "ms",
+   "snippet": {
+    "hl": "ms",
+    "name": "马来文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/VQOtpXl8eu0mFaoH_X49nBNzwgA\"",
+   "id": "ca",
+   "snippet": {
+    "hl": "ca",
+    "name": "加泰罗尼亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/GSzA_GGlO7N4Xb7w8DvXpRMf594\"",
+   "id": "cs",
+   "snippet": {
+    "hl": "cs",
+    "name": "捷克文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/BMS5ej5I5K6L7-6h-A1cm3pIQKo\"",
+   "id": "da",
+   "snippet": {
+    "hl": "da",
+    "name": "丹麦文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/f5Q6HbFtELHN8bjMijaqXd45r60\"",
+   "id": "de",
+   "snippet": {
+    "hl": "de",
+    "name": "德文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/apLM0Fd5D99eTNJHfAyf2qI5wBo\"",
+   "id": "et",
+   "snippet": {
+    "hl": "et",
+    "name": "爱沙尼亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/od4BMJ7TknHivbKCJFWeGvhcKLQ\"",
+   "id": "en-GB",
+   "snippet": {
+    "hl": "en-GB",
+    "name": "英文（英国）"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/J85DQxTyEfdYdzL6VlCc1qkPdRg\"",
+   "id": "en",
+   "snippet": {
+    "hl": "en",
+    "name": "英文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/qUqQKcGGsT1wz7YerGqo2OvGI8w\"",
+   "id": "es",
+   "snippet": {
+    "hl": "es",
+    "name": "西班牙文（西班牙）"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/xT8AASGHY8KfYvwFVqp2zZoBJvU\"",
+   "id": "es-419",
+   "snippet": {
+    "hl": "es-419",
+    "name": "西班牙文（拉丁美洲）"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/4rTDOL-q1HinPH002HPVDN61GgM\"",
+   "id": "eu",
+   "snippet": {
+    "hl": "eu",
+    "name": "巴斯克文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/Nx4INaRH0Ky_mCjclkBgxXPQD7I\"",
+   "id": "fil",
+   "snippet": {
+    "hl": "fil",
+    "name": "菲律宾文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/uy5jzKqGg6d0yqmnElkH9d6_CaU\"",
+   "id": "fr",
+   "snippet": {
+    "hl": "fr",
+    "name": "法文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/ueirtwvXw19ZYvIIunZrnSNCQVo\"",
+   "id": "fr-CA",
+   "snippet": {
+    "hl": "fr-CA",
+    "name": "法文（加拿大）"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/gXqfpNqvCaITLK3vtVMrb9rCFk4\"",
+   "id": "gl",
+   "snippet": {
+    "hl": "gl",
+    "name": "加利西亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/vRh6fAHUUcgzu-O4Ufvi54IqwiU\"",
+   "id": "hr",
+   "snippet": {
+    "hl": "hr",
+    "name": "克罗地亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/HdlTDXUNYiWru8DDbiXPiwMNmd0\"",
+   "id": "zu",
+   "snippet": {
+    "hl": "zu",
+    "name": "祖鲁文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/u1c6lS7z4xF4edSifCsPkLR5DPc\"",
+   "id": "is",
+   "snippet": {
+    "hl": "is",
+    "name": "冰岛文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/gc7iunqK0yTdu454m63Bar4rJCg\"",
+   "id": "it",
+   "snippet": {
+    "hl": "it",
+    "name": "意大利文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/Mp9EXadOdxNxW7J9LSw3P-Zy9TQ\"",
+   "id": "sw",
+   "snippet": {
+    "hl": "sw",
+    "name": "斯瓦希里文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/iwfsoZ4Z_53Q4Fh6XY2BdlZF6HM\"",
+   "id": "lv",
+   "snippet": {
+    "hl": "lv",
+    "name": "拉脱维亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/2jCvS2dDNZDArIfDsjA5PmNvuAs\"",
+   "id": "lt",
+   "snippet": {
+    "hl": "lt",
+    "name": "立陶宛文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/phTEZgtgC9HMYl2QRePBVcsqwQs\"",
+   "id": "hu",
+   "snippet": {
+    "hl": "hu",
+    "name": "匈牙利文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/Wgsoo8hLBY-9y5M4z9pO7I3uTGQ\"",
+   "id": "nl",
+   "snippet": {
+    "hl": "nl",
+    "name": "荷兰文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/sv0laEXPWHO-gvGPDDlUGZljWn0\"",
+   "id": "no",
+   "snippet": {
+    "hl": "no",
+    "name": "挪威语"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/DQiVWRqL7265N0q8rR7h6cd-kjw\"",
+   "id": "uz",
+   "snippet": {
+    "hl": "uz",
+    "name": "乌兹别克语"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/uEqYahmNpdsMQ_0Znotx7E0IzUw\"",
+   "id": "pl",
+   "snippet": {
+    "hl": "pl",
+    "name": "波兰文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/dLqWRkGvlCJUzbDFoUJWn_E250A\"",
+   "id": "pt-PT",
+   "snippet": {
+    "hl": "pt-PT",
+    "name": "葡萄牙文（葡萄牙）"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/0wmYowIPIHzMcYEw-03bCZ7oR6o\"",
+   "id": "pt",
+   "snippet": {
+    "hl": "pt",
+    "name": "葡萄牙文（巴西）"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/ZUqvWWraYNV7PJGb8hVHjvahocA\"",
+   "id": "ro",
+   "snippet": {
+    "hl": "ro",
+    "name": "罗马尼亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/pf1EBoxrcvMvc0yiP27gGwJakGg\"",
+   "id": "sq",
+   "snippet": {
+    "hl": "sq",
+    "name": "阿尔巴尼亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/-GnQOrWGFf9x_qBLEgaLTNG2lTA\"",
+   "id": "sk",
+   "snippet": {
+    "hl": "sk",
+    "name": "斯洛伐克文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/kpeW66AOEywZII2bPnbAmmaM8b0\"",
+   "id": "sl",
+   "snippet": {
+    "hl": "sl",
+    "name": "斯洛文尼亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/9eI47z7a_DvoO8K9itRDYrvkJ48\"",
+   "id": "fi",
+   "snippet": {
+    "hl": "fi",
+    "name": "芬兰文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/mC53BJtW_cOhZktVPnTquGMIk64\"",
+   "id": "sv",
+   "snippet": {
+    "hl": "sv",
+    "name": "瑞典文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/V_yAsqFDz9vLB6prrWkPmoU7k0U\"",
+   "id": "vi",
+   "snippet": {
+    "hl": "vi",
+    "name": "越南文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/oryGNSYtghbgWSGBkJhd1xAjnJw\"",
+   "id": "tr",
+   "snippet": {
+    "hl": "tr",
+    "name": "土耳其文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/gqiBDd7F0AlijiSxRohbYLp5EnA\"",
+   "id": "bg",
+   "snippet": {
+    "hl": "bg",
+    "name": "保加利亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/CsEbsOgeVL0gT5wYqAHwY_4PQUE\"",
+   "id": "ky",
+   "snippet": {
+    "hl": "ky",
+    "name": "吉尔吉斯文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/wnj4mhke23YGDe1RUgSYZKsamqM\"",
+   "id": "kk",
+   "snippet": {
+    "hl": "kk",
+    "name": "哈萨克文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/I2eZ_HW2ZUaLhZukCWNzJpw-vYY\"",
+   "id": "mk",
+   "snippet": {
+    "hl": "mk",
+    "name": "马其顿文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/XlsAWycbXdecTRK3E_gn37RUh8U\"",
+   "id": "mn",
+   "snippet": {
+    "hl": "mn",
+    "name": "蒙古文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/HLb1kIllRpOt6cvUera1d8xAVLo\"",
+   "id": "ru",
+   "snippet": {
+    "hl": "ru",
+    "name": "俄文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/abbXaTSThRtXVuYiY5_0FTIWnpw\"",
+   "id": "sr",
+   "snippet": {
+    "hl": "sr",
+    "name": "塞尔维亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/2g8zuzp8YgNqmjTWqsCHxFjTMgA\"",
+   "id": "uk",
+   "snippet": {
+    "hl": "uk",
+    "name": "乌克兰文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/Xa94sUyte2VeP_x1mkJp_FH9KXE\"",
+   "id": "el",
+   "snippet": {
+    "hl": "el",
+    "name": "希腊文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/-gwhJjEsWEdsT_tkErdRUuKrh1c\"",
+   "id": "hy",
+   "snippet": {
+    "hl": "hy",
+    "name": "亚美尼亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/Sfz2ENZlUYyp_vPXPR552YF-0D0\"",
+   "id": "iw",
+   "snippet": {
+    "hl": "iw",
+    "name": "希伯来文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/PksA5v8EcRpfAPugu7sqw_f0ncM\"",
+   "id": "ur",
+   "snippet": {
+    "hl": "ur",
+    "name": "乌尔都文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/_8pTRgV9_SDGO4BJ4BIG5hHdk24\"",
+   "id": "ar",
+   "snippet": {
+    "hl": "ar",
+    "name": "阿拉伯文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/NJWzg_vxz9aT3AdXXqX6YVD2has\"",
+   "id": "fa",
+   "snippet": {
+    "hl": "fa",
+    "name": "波斯文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/AbvtVe3SZ4yfZxgsbCHC57R29vc\"",
+   "id": "ne",
+   "snippet": {
+    "hl": "ne",
+    "name": "尼泊尔文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/pnFoNEY2D3pvvzWXZl0PItV-3hk\"",
+   "id": "mr",
+   "snippet": {
+    "hl": "mr",
+    "name": "马拉地文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/xZpYw_wwe2bGQu9igK-vkaoVtTg\"",
+   "id": "hi",
+   "snippet": {
+    "hl": "hi",
+    "name": "印地文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/S0QFcBaOMPvx5l_Vy1Xg5C6ukhQ\"",
+   "id": "bn",
+   "snippet": {
+    "hl": "bn",
+    "name": "孟加拉文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/CKsQQt4na-FcuSz8uh8mtKPeqtY\"",
+   "id": "pa",
+   "snippet": {
+    "hl": "pa",
+    "name": "旁遮普文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/4eie1HW_1t7cNJHKm2_RTqoKJXI\"",
+   "id": "gu",
+   "snippet": {
+    "hl": "gu",
+    "name": "古吉拉特文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/MGmtdMgF9D_d9ZvlQV7ctmNxtt4\"",
+   "id": "ta",
+   "snippet": {
+    "hl": "ta",
+    "name": "泰米尔文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/ZTVcN7J4sLS0vs937i8PdfVrYTk\"",
+   "id": "te",
+   "snippet": {
+    "hl": "te",
+    "name": "泰卢固文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/Ym7WdB2ZYtoJSw7IKIvab265fKs\"",
+   "id": "kn",
+   "snippet": {
+    "hl": "kn",
+    "name": "卡纳达文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/X9gYpWpp_rKyfEKmjyrB9grambQ\"",
+   "id": "ml",
+   "snippet": {
+    "hl": "ml",
+    "name": "马拉雅拉姆文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/GGZr9t5-MtRqTA9SZ9d1WjqUzek\"",
+   "id": "si",
+   "snippet": {
+    "hl": "si",
+    "name": "僧伽罗文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/mjLewDxnboL0T0meuwog47FTH_0\"",
+   "id": "th",
+   "snippet": {
+    "hl": "th",
+    "name": "泰文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/UGQbJr2ZObV76yrA0qplFnNeH8s\"",
+   "id": "lo",
+   "snippet": {
+    "hl": "lo",
+    "name": "老挝文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/VIV3we0cM57-pzIZrjMVIib5xEI\"",
+   "id": "my",
+   "snippet": {
+    "hl": "my",
+    "name": "缅甸语"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/dLBnqv8yzjCDrWWWS4qBoO3mLbw\"",
+   "id": "ka",
+   "snippet": {
+    "hl": "ka",
+    "name": "格鲁吉亚文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/Rw3-7FTMAahaGvNQsqZrEeiScm4\"",
+   "id": "am",
+   "snippet": {
+    "hl": "am",
+    "name": "阿姆哈拉文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/wEKpDto5G_7aCag9NFOndET1AKE\"",
+   "id": "km",
+   "snippet": {
+    "hl": "km",
+    "name": "高棉文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/_fYEHf6s_HCEJmykyp1t2Im1Ogg\"",
+   "id": "zh-CN",
+   "snippet": {
+    "hl": "zh-CN",
+    "name": "中文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/9YFPHtG_eb5O3n8OM8K2DRqj7sY\"",
+   "id": "zh-TW",
+   "snippet": {
+    "hl": "zh-TW",
+    "name": "中文（台湾）"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/Me4-pFg7fq8OaML8zxYbCx9PzfA\"",
+   "id": "zh-HK",
+   "snippet": {
+    "hl": "zh-HK",
+    "name": "中文（香港）"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/pXWNsVMktnClMOMAs1I8k_rHoIk\"",
+   "id": "ja",
+   "snippet": {
+    "hl": "ja",
+    "name": "日文"
+   }
+  },
+  {
+   "kind": "youtube#i18nLanguage",
+   "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/YPKEcAhCKbsoKb2P6ASnCDMdO2U\"",
+   "id": "ko",
+   "snippet": {
+    "hl": "ko",
+    "name": "韩文"
+   }
+  }
+ ]
+}
+
