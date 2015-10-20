@@ -1,7 +1,7 @@
 package com.liguang.app.po;
 
 /**
- * Created by baidu on 15/10/19.
+ * Created by DawnLight on 15/10/19.
  */
 public class snippet {
     public String channelId;

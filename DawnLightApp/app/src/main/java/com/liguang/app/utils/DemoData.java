@@ -64,7 +64,6 @@ public class DemoData {
 
     public static List<YoutubeVideoCategoryItem> loadDemoYoutubeVideoCategoryItems(Context context) {
         String localeLanguage = Utils.GetLanguage(context);
-        LogUtils.DebugerTest(localeLanguage);
         List<YoutubeVideoCategoryItem> items = new ArrayList<>();
 if(localeLanguage.equals("zh")){
     localeLanguage=localeLanguage+"-CN";
@@ -90,7 +89,6 @@ if(localeLanguage.equals("zh")){
 //                yvci.channelId = vcobj.getJSONObject("snippet").getString("channelId");
 //                yvci.title = vcobj.getJSONObject("snippet").getString("title");
                 items.add(yvci);
-                LogUtils.DebugerTest(yvci.toString());
             }
         } catch (IOException | JSONException e) {
             LogUtils.DebugerError("",e);

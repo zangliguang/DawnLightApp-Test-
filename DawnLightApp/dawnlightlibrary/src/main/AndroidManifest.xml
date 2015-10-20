@@ -1,8 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.liguang.dawnlightlibrary">
 
-    <application android:allowBackup="true" android:label="@string/app_name"
-        android:supportsRtl="true">
+    <!--
+    这个属性在魅族手机上有问题,需要调研一下,真正发版的时候,应该恢复到application中
+    android:supportsRtl="true"-->
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name">
 
     </application>
 
