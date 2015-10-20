@@ -1,8 +1,10 @@
 package com.liguang.app.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -13,19 +15,22 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.liguang.app.R;
+import com.liguang.app.adapter.DemoVideoCategoryPagerAdapter;
+import com.liguang.app.adapter.YoutubeVideoPageAdapter;
+import com.liguang.app.fragment.YoutubeVideoFragment;
 import com.liguang.app.po.ColorItem;
-import com.liguang.app.po.DemoVideoCategoryPagerAdapter;
 import com.liguang.app.po.YoutubeVideoCategoryItem;
 import com.liguang.app.utils.DemoData;
 import com.liguang.library.RecyclerTabLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,YoutubeVideoFragment.OnFragmentInteractionListener {
     @InjectView(R.id.recycler_tab_layout)
     RecyclerTabLayout recyclerTabLayout;
     @InjectView(R.id.view_pager)
@@ -74,9 +79,16 @@ public class MainActivity extends AppCompatActivity
         DemoVideoCategoryPagerAdapter adapter = new DemoVideoCategoryPagerAdapter();
         adapter.addAll(youtubeVideoCategoryItems);
 
+
+        List<Fragment> mListFragment = new ArrayList<>();
+        for (int i = 0; i < youtubeVideoCategoryItems.size(); i++) {
+            mListFragment.add(new YoutubeVideoFragment().newInstance(String.valueOf(i),youtubeVideoCategoryItems.get(i).snippet.title));
+        }
+        YoutubeVideoPageAdapter youtubeVideoPageAdapter = new YoutubeVideoPageAdapter(getSupportFragmentManager(), mListFragment);
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(1);
-        viewPager.setAdapter(adapter);
+        //viewPager.setAdapter(adapter);
+        viewPager.setAdapter(youtubeVideoPageAdapter);
         recyclerTabLayout.setUpWithViewPager(viewPager);
 
     }
@@ -157,4 +169,8 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

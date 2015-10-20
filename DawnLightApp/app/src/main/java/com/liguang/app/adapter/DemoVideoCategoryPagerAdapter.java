@@ -1,4 +1,4 @@
-package com.liguang.app.po;
+package com.liguang.app.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.liguang.app.R;
+import com.liguang.app.po.YoutubeVideoCategoryItem;
 
 import java.util.ArrayList;
 import java.util.List;
