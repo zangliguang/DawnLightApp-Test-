@@ -1,10 +1,30 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.liguang.app.fragment.YoutubeVideoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <com.marshalchen.ultimaterecyclerview.CustomUltimateRecyclerview
+            android:id="@+id/custom_ultimate_recycler_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            app:recyclerviewClipToPadding="true"
+            app:recyclerviewEmptyView="@layout/empty_view"
+            app:recyclerviewFloatingActionView="@layout/floating_view"
+            app:recyclerviewPadding="2dp" />
+
+        <com.marshalchen.ultimaterecyclerview.ui.floatingactionbutton.AddFloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/custom_urv_add_floating_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            fab:plusIconColor="#808080"
+            fab:urv_fab_colorNormal="#aaffff" />
+    </RelativeLayout>
 </FrameLayout>
