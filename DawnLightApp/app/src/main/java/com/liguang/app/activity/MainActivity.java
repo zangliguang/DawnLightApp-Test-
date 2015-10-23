@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
 
         List<Fragment> mListFragment = new ArrayList<>();
         for (int i = 0; i < youtubeVideoCategoryItems.size(); i++) {
-            mListFragment.add(new YoutubeVideoFragment().newInstance(String.valueOf(i),youtubeVideoCategoryItems.get(i).snippet.title));
+            mListFragment.add(new YoutubeVideoFragment().newInstance(youtubeVideoCategoryItems.get(i).id,youtubeVideoCategoryItems.get(i).snippet.title));
         }
         YoutubeVideoPageAdapter youtubeVideoPageAdapter = new YoutubeVideoPageAdapter(getSupportFragmentManager(), mListFragment);
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);

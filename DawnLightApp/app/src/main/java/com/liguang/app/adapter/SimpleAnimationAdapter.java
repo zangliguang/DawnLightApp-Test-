@@ -27,6 +27,7 @@ public class SimpleAnimationAdapter extends UltimateViewAdapter<RecyclerView.Vie
     public SimpleAnimationAdapter(List<String> stringList) {
         this.stringList = stringList;
     }
+
     private int mDuration = 300;
     private Interpolator mInterpolator = new LinearInterpolator();
     private int mLastPosition = 5;
@@ -126,7 +127,6 @@ public class SimpleAnimationAdapter extends UltimateViewAdapter<RecyclerView.Vie
 
         TextView textView = (TextView) viewHolder.itemView.findViewById(R.id.stick_text);
         textView.setText(String.valueOf(getItem(position).charAt(0)));
-//        viewHolder.itemView.setBackgroundColor(Color.parseColor("#AA70DB93"));
         viewHolder.itemView.setBackgroundColor(Color.parseColor("#AAffffff"));
         ImageView imageView = (ImageView) viewHolder.itemView.findViewById(R.id.stick_img);
 

@@ -121,6 +121,7 @@ public class YoutubeVideoFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_youtube_video, container, false);
         initView(rootview);
+
         return rootview;
     }
 
