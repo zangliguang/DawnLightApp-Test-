@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.liguang.app.R;
-import com.liguang.app.po.YoutubeVideoCategoryItem;
+import com.liguang.app.po.youtube.YoutubeVideoCategoryItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class DemoVideoCategoryPagerAdapter extends PagerAdapter {
                 .inflate(R.layout.layout_page, container, false);
 
         TextView textView = (TextView) view.findViewById(R.id.title);
-        textView.setText("Page: " + mYoutubeVideoCategoryItems.get(position).snippet.title);
+        textView.setText("Page: " + mYoutubeVideoCategoryItems.get(position).snippet.getTitle());
         container.addView(view);
 
         return view;
@@ -48,7 +48,7 @@ public class DemoVideoCategoryPagerAdapter extends PagerAdapter {
 
     @Override
     public String getPageTitle(int position) {
-        return mYoutubeVideoCategoryItems.get(position).snippet.title;
+        return mYoutubeVideoCategoryItems.get(position).snippet.getTitle();
     }
 
     public void addAll(List<YoutubeVideoCategoryItem> items) {

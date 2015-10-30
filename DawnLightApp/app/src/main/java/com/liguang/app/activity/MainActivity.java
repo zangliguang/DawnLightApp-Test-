@@ -19,7 +19,7 @@ import com.liguang.app.adapter.DemoVideoCategoryPagerAdapter;
 import com.liguang.app.adapter.YoutubeVideoPageAdapter;
 import com.liguang.app.fragment.YoutubeVideoFragment;
 import com.liguang.app.po.ColorItem;
-import com.liguang.app.po.YoutubeVideoCategoryItem;
+import com.liguang.app.po.youtube.YoutubeVideoCategoryItem;
 import com.liguang.app.utils.DemoData;
 import com.liguang.library.RecyclerTabLayout;
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
 
         List<Fragment> mListFragment = new ArrayList<>();
         for (int i = 0; i < youtubeVideoCategoryItems.size(); i++) {
-            mListFragment.add(new YoutubeVideoFragment().newInstance(youtubeVideoCategoryItems.get(i).id,youtubeVideoCategoryItems.get(i).snippet.title));
+            mListFragment.add(new YoutubeVideoFragment().newInstance(youtubeVideoCategoryItems.get(i).id,youtubeVideoCategoryItems.get(i).snippet.getTitle()));
         }
         YoutubeVideoPageAdapter youtubeVideoPageAdapter = new YoutubeVideoPageAdapter(getSupportFragmentManager(), mListFragment);
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);

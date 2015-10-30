@@ -11,13 +11,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.liguang.app.R;
 import com.liguang.app.adapter.SimpleAnimationAdapter;
+import com.liguang.app.constants.LocalConstants;
+import com.liguang.app.constants.WebConstant;
+import com.liguang.app.http.Url;
+import com.liguang.app.po.youtube.YoutubeVideoItem;
+import com.liguang.app.po.youtube.snippet;
+import com.liguang.app.utils.LogUtils;
+import com.liguang.app.utils.OkHttpUtil;
+import com.liguang.app.utils.Utils;
 import com.marshalchen.ultimaterecyclerview.CustomUltimateRecyclerview;
 import com.marshalchen.ultimaterecyclerview.ObservableScrollState;
 import com.marshalchen.ultimaterecyclerview.ObservableScrollViewCallbacks;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +59,7 @@ public class YoutubeVideoFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private String mCatgoryId;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
@@ -55,7 +70,7 @@ public class YoutubeVideoFragment extends Fragment {
     LinearLayoutManager linearLayoutManager;
     int moreNum = 2;
     protected Context mContext = null;
-
+    private String mPageToken = null;
     private int mLoadTime = 0;
     StoreHouseHeader storeHouseHeader;
     MaterialHeader materialHeader;
@@ -110,9 +125,10 @@ public class YoutubeVideoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mCatgoryId = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -121,8 +137,45 @@ public class YoutubeVideoFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_youtube_video, container, false);
         initView(rootview);
-
+        Runnable runnable =new Runnable() {
+            @Override
+            public void run() {
+                loadData(Url.youtubeGetCategoriyVideoslist, mCatgoryId, mPageToken);
+            }
+        };
+        new Thread(runnable).start();
         return rootview;
+    }
+
+    private void loadData(String url,String catgoryId,String pageToken) {
+        if (Utils.isMobileNetworkAvailable(getActivity())) {
+            try {
+                String result = OkHttpUtil.getStringFromServer(OkHttpUtil.attachHttpGetParams(url, new BasicNameValuePair(WebConstant.YoutubeParams.part, WebConstant.YoutubeParams.snippet),
+                        new BasicNameValuePair(WebConstant.YoutubeParams.order, WebConstant.YoutubeParams.date),
+                        new BasicNameValuePair(WebConstant.YoutubeParams.type, WebConstant.YoutubeParams.video),
+                        new BasicNameValuePair(WebConstant.YoutubeParams.regionCode, WebConstant.YoutubeParams.US),
+                        new BasicNameValuePair(WebConstant.YoutubeParams.videoCategoryId, catgoryId),
+                        new BasicNameValuePair(WebConstant.YoutubeParams.maxResults, "50"),
+                        new BasicNameValuePair(WebConstant.YoutubeParams.pageToken, pageToken),
+                        new BasicNameValuePair(WebConstant.YoutubeParams.key, WebConstant.YoutubeParams.keyvalue)));
+                JSONObject obj = new JSONObject(result);
+                JSONArray ja = obj.getJSONArray(LocalConstants.Params.LocalYoutubeVideoCommonItems);
+                Gson gson = new Gson();
+                for (int i = 0; i < ja.length(); i++) {
+                    JSONObject vcobj = (JSONObject) ja.get(i);
+                    JSONObject snipeetobjec = vcobj.getJSONObject(LocalConstants.Params.LocalYoutubeVideoCommonSnippet);
+                    String snippetStr= snipeetobjec.toString();
+                    snippet Snippet=gson.fromJson(snippetStr, snippet.class);
+                    YoutubeVideoItem yvi = new YoutubeVideoItem(vcobj.getJSONObject("id").getString("videoId"),Snippet,snipeetobjec.getJSONObject("thumbnails").getJSONObject("high").getString("url"));
+                    LogUtils.DebugerTest(yvi.toString());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+        }
     }
 
     private void initView(View rootview) {

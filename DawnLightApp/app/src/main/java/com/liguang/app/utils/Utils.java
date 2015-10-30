@@ -164,14 +164,19 @@ public class Utils {
 	}
 
 	public static boolean isMobileNetworkAvailable(Context context) {
-		//获取应用上下�?
-		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		//获取系统的连接服�?
-		NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-		//获取网络的连接情�?
-		if (activeNetInfo != null && activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-			//判断3G�?
-			return true;
+		ConnectivityManager connectivity = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (connectivity == null) {
+			return false;
+		} else {
+			NetworkInfo[] info = connectivity.getAllNetworkInfo();
+			if (info != null) {
+				for (int i = 0; i < info.length; i++) {
+					if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+						return true;
+					}
+				}
+			}
 		}
 		return false;
 	}

@@ -6,7 +6,7 @@ import android.graphics.Color;
 import com.google.gson.Gson;
 import com.liguang.app.constants.LocalConstants;
 import com.liguang.app.po.ColorItem;
-import com.liguang.app.po.YoutubeVideoCategoryItem;
+import com.liguang.app.po.youtube.YoutubeVideoCategoryItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,33 +65,33 @@ public class DemoData {
     public static List<YoutubeVideoCategoryItem> loadDemoYoutubeVideoCategoryItems(Context context) {
         String localeLanguage = Utils.GetLanguage(context);
         List<YoutubeVideoCategoryItem> items = new ArrayList<>();
-if(localeLanguage.equals("zh")){
-    localeLanguage=localeLanguage+"-CN";
-}
+        if (localeLanguage.equals("zh")) {
+            localeLanguage = localeLanguage + "-CN";
+        }
         try {
             JSONObject obj = new JSONObject(loadJSONFromAsset(context, LocalConstants.Paths.LocalYoutubeVideoCategory));
-            String items_hl = LocalConstants.Paths.LocalYoutubeVideoCategoryItems + "_" + localeLanguage;
-            if(obj.isNull(items_hl)){
+            String items_hl = LocalConstants.Params.LocalYoutubeVideoCommonItems + "_" + localeLanguage;
+            if (obj.isNull(items_hl)) {
                 Iterator it = obj.keys();
                 List<String> keyListstr = new ArrayList<String>();
-                while(it.hasNext()){
-                    if(it.next().toString().contains(items_hl)){
-                        items_hl=it.next().toString();
+                while (it.hasNext()) {
+                    if (it.next().toString().contains(items_hl)) {
+                        items_hl = it.next().toString();
                     }
                 }
             }
-            JSONArray ja=obj.getJSONArray(items_hl);
-            for(int i = 0; i < ja.length(); i++){
-                Gson gson=new Gson();
-                JSONObject vcobj= (JSONObject) ja.get(i);
-                YoutubeVideoCategoryItem yvci=gson.fromJson(vcobj.toString(),YoutubeVideoCategoryItem.class);
+            JSONArray ja = obj.getJSONArray(items_hl);
+            Gson gson = new Gson();
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject vcobj = (JSONObject) ja.get(i);
+                YoutubeVideoCategoryItem yvci = gson.fromJson(vcobj.toString(), YoutubeVideoCategoryItem.class);
 //                yvci.id = vcobj.getString("id");
 //                yvci.channelId = vcobj.getJSONObject("snippet").getString("channelId");
 //                yvci.title = vcobj.getJSONObject("snippet").getString("title");
                 items.add(yvci);
             }
         } catch (IOException | JSONException e) {
-            LogUtils.DebugerError("",e);
+            LogUtils.DebugerError("", e);
             e.printStackTrace();
         }
         return items;

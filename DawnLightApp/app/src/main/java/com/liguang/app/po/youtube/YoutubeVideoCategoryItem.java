@@ -1,4 +1,4 @@
-package com.liguang.app.po;
+package com.liguang.app.po.youtube;
 
 /**
  * Created by DawnLight on 15/10/19.

@@ -1,5 +1,7 @@
 package com.liguang.app.utils;
 
+import android.text.TextUtils;
+
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -9,6 +11,7 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
  
@@ -78,6 +81,22 @@ public class OkHttpUtil {
    * @return
    */
   public static String attachHttpGetParams(String url, List<BasicNameValuePair> params){
+    return url + "?" + formatParams(params);
+  }
+  /**
+   * 为HttpGet 的 url 方便的添加多个name value 参数。
+   * @param url
+   * @param nameValuePairs
+   * @return
+   */
+  public static String attachHttpGetParams(String url, BasicNameValuePair... nameValuePairs){
+    List<BasicNameValuePair> params=new ArrayList<>();
+    for(BasicNameValuePair nameValuePair:nameValuePairs){
+      if(TextUtils.isEmpty(nameValuePair.getValue())){
+        continue;
+      }
+      params.add(nameValuePair);
+    }
     return url + "?" + formatParams(params);
   }
   /**
