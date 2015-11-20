@@ -69,11 +69,13 @@ public class YoutubeVideoFragment extends Fragment {
     View floatingButton = null;
     LinearLayoutManager linearLayoutManager;
     int moreNum = 2;
+    int ADAPTEROTIFYDATA = 4;
     protected Context mContext = null;
     private String mPageToken = null;
     private int mLoadTime = 0;
     StoreHouseHeader storeHouseHeader;
     MaterialHeader materialHeader;
+    List<YoutubeVideoItem> YoutubeVideoList = new ArrayList<YoutubeVideoItem>();
     Handler changeHeaderHandler = new Handler() {
 
         @Override
@@ -94,6 +96,7 @@ public class YoutubeVideoFragment extends Fragment {
                     refreshingString();
                     break;
                 case 4:
+                    simpleRecyclerViewAdapter.setYoutubeData(YoutubeVideoList);
                     break;
             }
         }
@@ -137,7 +140,7 @@ public class YoutubeVideoFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_youtube_video, container, false);
         initView(rootview);
-        Runnable runnable =new Runnable() {
+        Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 loadData(Url.youtubeGetCategoriyVideoslist, mCatgoryId, mPageToken);
@@ -147,7 +150,7 @@ public class YoutubeVideoFragment extends Fragment {
         return rootview;
     }
 
-    private void loadData(String url,String catgoryId,String pageToken) {
+    private void loadData(String url, String catgoryId, String pageToken) {
         if (Utils.isMobileNetworkAvailable(getActivity())) {
             try {
                 String result = OkHttpUtil.getStringFromServer(OkHttpUtil.attachHttpGetParams(url, new BasicNameValuePair(WebConstant.YoutubeParams.part, WebConstant.YoutubeParams.snippet),
@@ -164,11 +167,13 @@ public class YoutubeVideoFragment extends Fragment {
                 for (int i = 0; i < ja.length(); i++) {
                     JSONObject vcobj = (JSONObject) ja.get(i);
                     JSONObject snipeetobjec = vcobj.getJSONObject(LocalConstants.Params.LocalYoutubeVideoCommonSnippet);
-                    String snippetStr= snipeetobjec.toString();
-                    snippet Snippet=gson.fromJson(snippetStr, snippet.class);
-                    YoutubeVideoItem yvi = new YoutubeVideoItem(vcobj.getJSONObject("id").getString("videoId"),Snippet,snipeetobjec.getJSONObject("thumbnails").getJSONObject("high").getString("url"));
+                    String snippetStr = snipeetobjec.toString();
+                    snippet Snippet = gson.fromJson(snippetStr, snippet.class);
+                    YoutubeVideoItem yvi = new YoutubeVideoItem(vcobj.getJSONObject("id").getString("videoId"), Snippet, snipeetobjec.getJSONObject("thumbnails").getJSONObject("high").getString("url"));
+                    YoutubeVideoList.add(yvi);
                     LogUtils.DebugerTest(yvi.toString());
                 }
+                changeHeaderHandler.sendEmptyMessage(ADAPTEROTIFYDATA);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
@@ -183,16 +188,8 @@ public class YoutubeVideoFragment extends Fragment {
         ultimateRecyclerView.setHasFixedSize(false);
         floatingButton = rootview.findViewById(R.id.custom_urv_add_floating_button);
         List<String> stringList = new ArrayList<>();
-        simpleRecyclerViewAdapter = new SimpleAnimationAdapter(stringList);
+        simpleRecyclerViewAdapter = new SimpleAnimationAdapter(new ArrayList<YoutubeVideoItem>());
 
-        stringList.add("111");
-        stringList.add("aaa");
-        stringList.add("222");
-        stringList.add("33");
-        stringList.add("44");
-        stringList.add("55");
-        stringList.add("66");
-        stringList.add("11771");
         linearLayoutManager = new LinearLayoutManager(mContext);
         ultimateRecyclerView.setLayoutManager(linearLayoutManager);
         ultimateRecyclerView.setAdapter(simpleRecyclerViewAdapter);
@@ -216,20 +213,20 @@ public class YoutubeVideoFragment extends Fragment {
             @Override
             public void loadMore(int itemsCount, final int maxLastVisiblePosition) {
                 Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        simpleRecyclerViewAdapter.insert("More " + moreNum++, simpleRecyclerViewAdapter.getAdapterItemCount());
-                        simpleRecyclerViewAdapter.insert("More " + moreNum++, simpleRecyclerViewAdapter.getAdapterItemCount());
-                        simpleRecyclerViewAdapter.insert("More " + moreNum++, simpleRecyclerViewAdapter.getAdapterItemCount());
-                        // linearLayoutManager.scrollToPositionWithOffset(maxLastVisiblePosition,-1);
-                        //   linearLayoutManager.scrollToPosition(maxLastVisiblePosition);
-
-                    }
-                }, 1000);
+//                handler.postDelayed(new Runnable() {
+//                    public void run() {
+//                        simpleRecyclerViewAdapter.insert("More " + moreNum++, simpleRecyclerViewAdapter.getAdapterItemCount());
+//                        simpleRecyclerViewAdapter.insert("More " + moreNum++, simpleRecyclerViewAdapter.getAdapterItemCount());
+//                        simpleRecyclerViewAdapter.insert("More " + moreNum++, simpleRecyclerViewAdapter.getAdapterItemCount());
+//                        // linearLayoutManager.scrollToPositionWithOffset(maxLastVisiblePosition,-1);
+//                        //   linearLayoutManager.scrollToPosition(maxLastVisiblePosition);
+//
+//                    }
+//                }, 1000);
             }
         });
-        // ultimateRecyclerView.hideDefaultFloatingActionButton();
-        // ultimateRecyclerView.hideFloatingActionMenu();
+         ultimateRecyclerView.hideDefaultFloatingActionButton();
+         ultimateRecyclerView.hideFloatingActionMenu();
         ultimateRecyclerView.displayCustomFloatingActionView(false);
         ultimateRecyclerView.setScrollViewCallbacks(new ObservableScrollViewCallbacks() {
             @Override
@@ -322,16 +319,16 @@ public class YoutubeVideoFragment extends Fragment {
 
             @Override
             public void onRefreshBegin(PtrFrameLayout ptrFrameLayout) {
-                ptrFrameLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        simpleRecyclerViewAdapter.insert("Refresh things", 0);
-                        //   ultimateRecyclerView.scrollBy(0, -50);
-                        linearLayoutManager.scrollToPosition(0);
-                        ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
-                        changeHeaderHandler.sendEmptyMessageDelayed(0, 500);
-                    }
-                }, 1800);
+//                ptrFrameLayout.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        simpleRecyclerViewAdapter.insert("Refresh things", 0);
+//                        //   ultimateRecyclerView.scrollBy(0, -50);
+//                        linearLayoutManager.scrollToPosition(0);
+//                        ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
+//                        changeHeaderHandler.sendEmptyMessageDelayed(0, 500);
+//                    }
+//                }, 1800);
             }
         });
     }
@@ -402,18 +399,18 @@ public class YoutubeVideoFragment extends Fragment {
 
             @Override
             public void onRefreshBegin(final PtrFrameLayout frame) {
-                frame.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // frame.refreshComplete();
-                        simpleRecyclerViewAdapter.insert("Refresh things", 0);
-                        //   ultimateRecyclerView.scrollBy(0, -50);
-                        linearLayoutManager.scrollToPosition(0);
-                        ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
-                        if (mLoadTime % 2 == 0)
-                            changeHeaderHandler.sendEmptyMessageDelayed(1, 500);
-                    }
-                }, 2000);
+//                frame.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        // frame.refreshComplete();
+//                        simpleRecyclerViewAdapter.insert("Refresh things", 0);
+//                        //   ultimateRecyclerView.scrollBy(0, -50);
+//                        linearLayoutManager.scrollToPosition(0);
+//                        ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
+//                        if (mLoadTime % 2 == 0)
+//                            changeHeaderHandler.sendEmptyMessageDelayed(1, 500);
+//                    }
+//                }, 2000);
             }
         });
     }

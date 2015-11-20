@@ -15,10 +15,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.liguang.app.R;
-import com.liguang.app.adapter.DemoVideoCategoryPagerAdapter;
 import com.liguang.app.adapter.YoutubeVideoPageAdapter;
 import com.liguang.app.fragment.YoutubeVideoFragment;
-import com.liguang.app.po.ColorItem;
 import com.liguang.app.po.youtube.YoutubeVideoCategoryItem;
 import com.liguang.app.utils.DemoData;
 import com.liguang.library.RecyclerTabLayout;
@@ -46,16 +44,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setElevation(0);
@@ -67,17 +55,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        List<ColorItem> colorItems = DemoData.loadDemoColorItems(this);
         List<YoutubeVideoCategoryItem> youtubeVideoCategoryItems = DemoData.loadDemoYoutubeVideoCategoryItems(this);
-//        Collections.sort(items, new Comparator<ColorItem>() {
-//            @Override
-//            public int compare(ColorItem lhs, ColorItem rhs) {
-//                return lhs.name.compareTo(rhs.name);
-//            }
-//        });
 
-        DemoVideoCategoryPagerAdapter adapter = new DemoVideoCategoryPagerAdapter();
-        adapter.addAll(youtubeVideoCategoryItems);
 
 
         List<Fragment> mListFragment = new ArrayList<>();
@@ -87,7 +66,6 @@ public class MainActivity extends AppCompatActivity
         YoutubeVideoPageAdapter youtubeVideoPageAdapter = new YoutubeVideoPageAdapter(getSupportFragmentManager(), mListFragment);
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(1);
-        //viewPager.setAdapter(adapter);
         viewPager.setAdapter(youtubeVideoPageAdapter);
         recyclerTabLayout.setUpWithViewPager(viewPager);
 

@@ -22,4 +22,28 @@ public class YoutubeVideoItem {
         this.snippet = snippet;
         this.thumbnails = thumbnails;
     }
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
+
+    public com.liguang.app.po.youtube.snippet getSnippet() {
+        return snippet;
+    }
+
+    public void setSnippet(com.liguang.app.po.youtube.snippet snippet) {
+        this.snippet = snippet;
+    }
+
+    public String getThumbnails() {
+        return thumbnails;
+    }
+
+    public void setThumbnails(String thumbnails) {
+        this.thumbnails = thumbnails;
+    }
 }
