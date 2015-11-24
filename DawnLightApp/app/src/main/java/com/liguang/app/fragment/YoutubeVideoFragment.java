@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class YoutubeVideoFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mCatgoryId;
     private String mParam2;
+    private String nextPageToken;
 
     private OnFragmentInteractionListener mListener;
 
@@ -71,7 +73,6 @@ public class YoutubeVideoFragment extends Fragment {
     int moreNum = 2;
     int ADAPTEROTIFYDATA = 4;
     protected Context mContext = null;
-    private String mPageToken = null;
     private int mLoadTime = 0;
     StoreHouseHeader storeHouseHeader;
     MaterialHeader materialHeader;
@@ -96,7 +97,8 @@ public class YoutubeVideoFragment extends Fragment {
                     refreshingString();
                     break;
                 case 4:
-                    simpleRecyclerViewAdapter.setYoutubeData(YoutubeVideoList);
+                    for(YoutubeVideoItem youtubeItem:YoutubeVideoList)
+                    simpleRecyclerViewAdapter.insert(youtubeItem,simpleRecyclerViewAdapter.getAdapterItemCount());
                     break;
             }
         }
@@ -127,6 +129,7 @@ public class YoutubeVideoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtils.DebugerTest("YoutubeVideoFragment-onCreate");
         if (getArguments() != null) {
             mCatgoryId = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -137,16 +140,19 @@ public class YoutubeVideoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        LogUtils.DebugerTest("YoutubeVideoFragment-onCreateView");
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_youtube_video, container, false);
         initView(rootview);
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                loadData(Url.youtubeGetCategoriyVideoslist, mCatgoryId, mPageToken);
-            }
-        };
-        new Thread(runnable).start();
+        if (TextUtils.isEmpty(nextPageToken)) {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    loadData(Url.youtubeGetCategoriyVideoslist, mCatgoryId, nextPageToken);
+                }
+            };
+            new Thread(runnable).start();
+        }
         return rootview;
     }
 
@@ -156,23 +162,29 @@ public class YoutubeVideoFragment extends Fragment {
                 String result = OkHttpUtil.getStringFromServer(OkHttpUtil.attachHttpGetParams(url, new BasicNameValuePair(WebConstant.YoutubeParams.part, WebConstant.YoutubeParams.snippet),
                         new BasicNameValuePair(WebConstant.YoutubeParams.order, WebConstant.YoutubeParams.date),
                         new BasicNameValuePair(WebConstant.YoutubeParams.type, WebConstant.YoutubeParams.video),
-                        new BasicNameValuePair(WebConstant.YoutubeParams.regionCode, WebConstant.YoutubeParams.US),
+                        //new BasicNameValuePair(WebConstant.YoutubeParams.regionCode, WebConstant.YoutubeParams.US),
                         new BasicNameValuePair(WebConstant.YoutubeParams.videoCategoryId, catgoryId),
                         new BasicNameValuePair(WebConstant.YoutubeParams.maxResults, "50"),
                         new BasicNameValuePair(WebConstant.YoutubeParams.pageToken, pageToken),
                         new BasicNameValuePair(WebConstant.YoutubeParams.key, WebConstant.YoutubeParams.keyvalue)));
                 JSONObject obj = new JSONObject(result);
+                nextPageToken = obj.getString(LocalConstants.Params.LocalYoutubeVideoNextPageToken);
                 JSONArray ja = obj.getJSONArray(LocalConstants.Params.LocalYoutubeVideoCommonItems);
                 Gson gson = new Gson();
+                List<YoutubeVideoItem> list = new ArrayList<>();
                 for (int i = 0; i < ja.length(); i++) {
                     JSONObject vcobj = (JSONObject) ja.get(i);
                     JSONObject snipeetobjec = vcobj.getJSONObject(LocalConstants.Params.LocalYoutubeVideoCommonSnippet);
                     String snippetStr = snipeetobjec.toString();
                     snippet Snippet = gson.fromJson(snippetStr, snippet.class);
                     YoutubeVideoItem yvi = new YoutubeVideoItem(vcobj.getJSONObject("id").getString("videoId"), Snippet, snipeetobjec.getJSONObject("thumbnails").getJSONObject("high").getString("url"));
-                    YoutubeVideoList.add(yvi);
-                    LogUtils.DebugerTest(yvi.toString());
+                    list.add(yvi);
                 }
+                YoutubeVideoList = list;
+//                if (TextUtils.isEmpty(pageToken)) {
+//
+//                } else {
+//                }
                 changeHeaderHandler.sendEmptyMessage(ADAPTEROTIFYDATA);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -187,7 +199,6 @@ public class YoutubeVideoFragment extends Fragment {
         ultimateRecyclerView = (CustomUltimateRecyclerview) rootview.findViewById(R.id.custom_ultimate_recycler_view);
         ultimateRecyclerView.setHasFixedSize(false);
         floatingButton = rootview.findViewById(R.id.custom_urv_add_floating_button);
-        List<String> stringList = new ArrayList<>();
         simpleRecyclerViewAdapter = new SimpleAnimationAdapter(new ArrayList<YoutubeVideoItem>());
 
         linearLayoutManager = new LinearLayoutManager(mContext);
@@ -198,7 +209,7 @@ public class YoutubeVideoFragment extends Fragment {
         simpleRecyclerViewAdapter.setCustomLoadMoreView(LayoutInflater.from(mContext)
                 .inflate(R.layout.custom_bottom_progressbar, null));
 
-        ultimateRecyclerView.setParallaxHeader(getActivity().getLayoutInflater().inflate(R.layout.parallax_recyclerview_header, ultimateRecyclerView.mRecyclerView, false));
+        //ultimateRecyclerView.setParallaxHeader(getActivity().getLayoutInflater().inflate(R.layout.parallax_recyclerview_header, ultimateRecyclerView.mRecyclerView, false));
         ultimateRecyclerView.setOnParallaxScroll(new UltimateRecyclerView.OnParallaxScroll() {
             @Override
             public void onParallaxScroll(float percentage, float offset, View parallax) {
@@ -212,21 +223,17 @@ public class YoutubeVideoFragment extends Fragment {
         ultimateRecyclerView.setOnLoadMoreListener(new UltimateRecyclerView.OnLoadMoreListener() {
             @Override
             public void loadMore(int itemsCount, final int maxLastVisiblePosition) {
-                Handler handler = new Handler();
-//                handler.postDelayed(new Runnable() {
-//                    public void run() {
-//                        simpleRecyclerViewAdapter.insert("More " + moreNum++, simpleRecyclerViewAdapter.getAdapterItemCount());
-//                        simpleRecyclerViewAdapter.insert("More " + moreNum++, simpleRecyclerViewAdapter.getAdapterItemCount());
-//                        simpleRecyclerViewAdapter.insert("More " + moreNum++, simpleRecyclerViewAdapter.getAdapterItemCount());
-//                        // linearLayoutManager.scrollToPositionWithOffset(maxLastVisiblePosition,-1);
-//                        //   linearLayoutManager.scrollToPosition(maxLastVisiblePosition);
-//
-//                    }
-//                }, 1000);
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        loadData(Url.youtubeGetCategoriyVideoslist, mCatgoryId, nextPageToken);
+                    }
+                };
+                new Thread(runnable).start();
             }
         });
-         ultimateRecyclerView.hideDefaultFloatingActionButton();
-         ultimateRecyclerView.hideFloatingActionMenu();
+        ultimateRecyclerView.hideDefaultFloatingActionButton();
+        ultimateRecyclerView.hideFloatingActionMenu();
         ultimateRecyclerView.displayCustomFloatingActionView(false);
         ultimateRecyclerView.setScrollViewCallbacks(new ObservableScrollViewCallbacks() {
             @Override
@@ -289,7 +296,7 @@ public class YoutubeVideoFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
@@ -399,18 +406,13 @@ public class YoutubeVideoFragment extends Fragment {
 
             @Override
             public void onRefreshBegin(final PtrFrameLayout frame) {
-//                frame.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        // frame.refreshComplete();
-//                        simpleRecyclerViewAdapter.insert("Refresh things", 0);
-//                        //   ultimateRecyclerView.scrollBy(0, -50);
-//                        linearLayoutManager.scrollToPosition(0);
-//                        ultimateRecyclerView.mPtrFrameLayout.refreshComplete();
-//                        if (mLoadTime % 2 == 0)
-//                            changeHeaderHandler.sendEmptyMessageDelayed(1, 500);
-//                    }
-//                }, 2000);
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        loadData(Url.youtubeGetCategoriyVideoslist, mCatgoryId, nextPageToken);
+                    }
+                };
+                new Thread(runnable).start();
             }
         });
     }

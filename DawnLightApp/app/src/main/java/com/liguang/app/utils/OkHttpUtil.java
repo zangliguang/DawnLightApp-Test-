@@ -57,6 +57,7 @@ public class OkHttpUtil {
   }
   public static String getStringFromServer(String url) throws IOException{
     Request request = new Request.Builder().url(url).build();
+    LogUtils.DebugerTest("url="+url);
     Response response = execute(request);
     if (response.isSuccessful()) {
       String responseUrl = response.body().string();

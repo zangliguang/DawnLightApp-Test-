@@ -65,22 +65,9 @@ public class DemoData {
     public static List<YoutubeVideoCategoryItem> loadDemoYoutubeVideoCategoryItems(Context context) {
         String localeLanguage = Utils.GetLanguage(context);
         List<YoutubeVideoCategoryItem> items = new ArrayList<>();
-        if (localeLanguage.equals("zh")) {
-            localeLanguage = localeLanguage + "-CN";
-        }
         try {
             JSONObject obj = new JSONObject(loadJSONFromAsset(context, LocalConstants.Paths.LocalYoutubeVideoCategory));
-            String items_hl = LocalConstants.Params.LocalYoutubeVideoCommonItems + "_" + localeLanguage;
-            if (obj.isNull(items_hl)) {
-                Iterator it = obj.keys();
-                List<String> keyListstr = new ArrayList<String>();
-                while (it.hasNext()) {
-                    if (it.next().toString().contains(items_hl)) {
-                        items_hl = it.next().toString();
-                    }
-                }
-            }
-            JSONArray ja = obj.getJSONArray(items_hl);
+            JSONArray ja = obj.getJSONArray(LocalConstants.Params.LocalYoutubeVideoCommonItems);
             Gson gson = new Gson();
             for (int i = 0; i < ja.length(); i++) {
                 JSONObject vcobj = (JSONObject) ja.get(i);

@@ -644,7 +644,7 @@
   {
    "kind": "youtube#i18nLanguage",
    "etag": "\"fpJ9onbY0Rl_LqYLG6rOCJ9h9N8/_fYEHf6s_HCEJmykyp1t2Im1Ogg\"",
-   "id": "zh-CN",
+   "id": "-CN",
    "snippet": {
     "hl": "zh-CN",
     "name": "中文"

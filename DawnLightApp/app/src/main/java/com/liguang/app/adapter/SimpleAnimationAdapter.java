@@ -1,7 +1,5 @@
 package com.liguang.app.adapter;
 
-import android.animation.Animator;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +14,12 @@ import com.liguang.app.po.youtube.YoutubeVideoItem;
 import com.marshalchen.ultimaterecyclerview.URLogs;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
 import com.marshalchen.ultimaterecyclerview.UltimateViewAdapter;
-import com.marshalchen.ultimaterecyclerview.animators.internal.ViewHelper;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.security.SecureRandom;
 import java.util.List;
 
 
-public class SimpleAnimationAdapter extends UltimateViewAdapter<RecyclerView.ViewHolder> {
+public class SimpleAnimationAdapter extends UltimateViewAdapter<SimpleAnimationAdapter.ViewHolder> {
     private List<YoutubeVideoItem> youtubeData;
 
     public SimpleAnimationAdapter(List<YoutubeVideoItem> youtubeData) {
@@ -36,26 +32,6 @@ public class SimpleAnimationAdapter extends UltimateViewAdapter<RecyclerView.Vie
 
     private boolean isFirstOnly = true;
 
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (position < getItemCount() && (customHeaderView != null ? position <= youtubeData.size() : position < youtubeData.size()) && (customHeaderView != null ? position > 0 : true)) {
-
-            ((ViewHolder) holder).textViewSample.setText(youtubeData.get(customHeaderView != null ? position - 1 : position).getSnippet().getTitle());
-            ImageLoader.getInstance().displayImage(getItem(position).getThumbnails(), ((ViewHolder) holder).imageViewSample);
-            // ((ViewHolder) holder).itemView.setActivated(selectedItems.get(position, false));
-        }
-        if (!isFirstOnly || position > mLastPosition) {
-            for (Animator anim : getAdapterAnimations(holder.itemView, AdapterAnimationType.ScaleIn)) {
-                anim.setDuration(mDuration).start();
-                anim.setInterpolator(mInterpolator);
-            }
-            mLastPosition = position;
-        } else {
-            ViewHelper.clear(holder.itemView);
-        }
-
-    }
-
 
     @Override
     public int getAdapterItemCount() {
@@ -63,12 +39,12 @@ public class SimpleAnimationAdapter extends UltimateViewAdapter<RecyclerView.Vie
     }
 
     @Override
-    public RecyclerView.ViewHolder getViewHolder(View view) {
-        return new UltimateRecyclerviewViewHolder(view);
+    public ViewHolder getViewHolder(View view) {
+        return new ViewHolder(view);
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view_adapter, parent, false);
         ViewHolder vh = new ViewHolder(v);
@@ -124,29 +100,20 @@ public class SimpleAnimationAdapter extends UltimateViewAdapter<RecyclerView.Vie
     }
 
     @Override
-    public void onBindHeaderViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        TextView textView = (TextView) viewHolder.itemView.findViewById(R.id.stick_text);
-        textView.setText(String.valueOf(getItem(position).getSnippet().getTitle()));
-        viewHolder.itemView.setBackgroundColor(Color.parseColor("#AAffffff"));
-        ImageView imageView = (ImageView) viewHolder.itemView.findViewById(R.id.stick_img);
-        SecureRandom imgGen = new SecureRandom();
-        switch (imgGen.nextInt(3)) {
-            case 0:
-                imageView.setImageResource(R.drawable.test_back1);
-                break;
-            case 1:
-                imageView.setImageResource(R.drawable.test_back2);
-                break;
-            case 2:
-                imageView.setImageResource(R.drawable.test_back);
-                break;
-        }
     }
 
-    public void setYoutubeData(List<YoutubeVideoItem> youtubeData) {
-        this.youtubeData = youtubeData;
-        notifyDataSetChanged();
+
+
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        if(position>=youtubeData.size()){
+            return;
+        }
+        ((ViewHolder) holder).textViewSample.setText(youtubeData.get(position).getSnippet().getTitle());
+        ImageLoader.getInstance().displayImage(youtubeData.get(position).getThumbnails(), ((ViewHolder) holder).imageViewSample);
     }
 //
 //    private int getRandomColor() {
@@ -157,7 +124,7 @@ public class SimpleAnimationAdapter extends UltimateViewAdapter<RecyclerView.Vie
 //    }
 
 
-    class ViewHolder extends UltimateRecyclerviewViewHolder {
+    public class ViewHolder extends UltimateRecyclerviewViewHolder {
 
         TextView textViewSample;
         ImageView imageViewSample;
