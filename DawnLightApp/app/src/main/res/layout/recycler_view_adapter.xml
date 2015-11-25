@@ -12,15 +12,15 @@
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
         android:layout_marginTop="2dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/test_back4" />
+        android:scaleType="centerCrop" />
+
     <TextView
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/imageview"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
-        android:layout_below="@id/imageview"
         android:text="test2"
         android:textSize="18sp" />
 

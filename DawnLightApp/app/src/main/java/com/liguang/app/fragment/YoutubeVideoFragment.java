@@ -1,12 +1,15 @@
 package com.liguang.app.fragment;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +30,7 @@ import com.marshalchen.ultimaterecyclerview.CustomUltimateRecyclerview;
 import com.marshalchen.ultimaterecyclerview.ObservableScrollState;
 import com.marshalchen.ultimaterecyclerview.ObservableScrollViewCallbacks;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -97,8 +101,10 @@ public class YoutubeVideoFragment extends Fragment {
                     refreshingString();
                     break;
                 case 4:
-                    for(YoutubeVideoItem youtubeItem:YoutubeVideoList)
-                    simpleRecyclerViewAdapter.insert(youtubeItem,simpleRecyclerViewAdapter.getAdapterItemCount());
+//                    for(YoutubeVideoItem youtubeItem:YoutubeVideoList){
+//                        simpleRecyclerViewAdapter.insert(youtubeItem,simpleRecyclerViewAdapter.getAdapterItemCount());
+//                    }
+                    simpleRecyclerViewAdapter.add(YoutubeVideoList);
                     break;
             }
         }
@@ -195,6 +201,7 @@ public class YoutubeVideoFragment extends Fragment {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     private void initView(View rootview) {
         ultimateRecyclerView = (CustomUltimateRecyclerview) rootview.findViewById(R.id.custom_ultimate_recycler_view);
         ultimateRecyclerView.setHasFixedSize(false);
@@ -204,8 +211,31 @@ public class YoutubeVideoFragment extends Fragment {
         linearLayoutManager = new LinearLayoutManager(mContext);
         ultimateRecyclerView.setLayoutManager(linearLayoutManager);
         ultimateRecyclerView.setAdapter(simpleRecyclerViewAdapter);
-
         ultimateRecyclerView.enableLoadmore();
+        ultimateRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                switch (newState) {
+                    case 0:
+                        ImageLoader.getInstance().resume();
+                        break;
+
+                    case 1:
+                        ImageLoader.getInstance().pause();
+                        break;
+
+                    case 2:
+                        ImageLoader.getInstance().pause();
+                        break;
+                }
+            }
+        });
         simpleRecyclerViewAdapter.setCustomLoadMoreView(LayoutInflater.from(mContext)
                 .inflate(R.layout.custom_bottom_progressbar, null));
 

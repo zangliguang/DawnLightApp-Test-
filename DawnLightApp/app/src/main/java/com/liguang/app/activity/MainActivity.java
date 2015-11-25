@@ -64,8 +64,7 @@ public class MainActivity extends AppCompatActivity
             mListFragment.add(new YoutubeVideoFragment().newInstance(youtubeVideoCategoryItems.get(i).id,youtubeVideoCategoryItems.get(i).snippet.getTitle()));
         }
         YoutubeVideoPageAdapter youtubeVideoPageAdapter = new YoutubeVideoPageAdapter(getSupportFragmentManager(), mListFragment);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-        viewPager.setOffscreenPageLimit(1);
+        viewPager.setOffscreenPageLimit(10);
         viewPager.setAdapter(youtubeVideoPageAdapter);
         recyclerTabLayout.setUpWithViewPager(viewPager);
 

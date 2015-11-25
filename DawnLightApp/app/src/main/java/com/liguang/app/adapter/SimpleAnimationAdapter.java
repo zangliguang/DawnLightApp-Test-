@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.liguang.app.R;
 import com.liguang.app.po.youtube.YoutubeVideoItem;
+import com.liguang.app.utils.LogUtils;
+import com.liguang.app.utils.Options;
 import com.marshalchen.ultimaterecyclerview.URLogs;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
 import com.marshalchen.ultimaterecyclerview.UltimateViewAdapter;
@@ -105,15 +107,19 @@ public class SimpleAnimationAdapter extends UltimateViewAdapter<SimpleAnimationA
     }
 
 
-
-
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if(position>=youtubeData.size()){
+        if (position >= youtubeData.size()) {
             return;
         }
-        ((ViewHolder) holder).textViewSample.setText(youtubeData.get(position).getSnippet().getTitle());
-        ImageLoader.getInstance().displayImage(youtubeData.get(position).getThumbnails(), ((ViewHolder) holder).imageViewSample);
+        LogUtils.DebugerTest("onBindViewHolder="+position);
+        holder.textViewSample.setText(youtubeData.get(position).getSnippet().getTitle());
+        ImageLoader.getInstance().displayImage(youtubeData.get(position).getThumbnails(), holder.imageViewSample, Options.getListOptions());
+    }
+
+    public void add(List<YoutubeVideoItem> youtubeVideoList) {
+        youtubeData.addAll(youtubeVideoList);
+        notifyDataSetChanged();
     }
 //
 //    private int getRandomColor() {
