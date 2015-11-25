@@ -12,6 +12,7 @@ UltimateRecyclerView设置滑动时候停止imageloader加载，想和listview�
 RecyclerTabLayout加载多个fragment时候，内存释放也是个问题，outScreenLimit可以设置大一些，不过也不是根本途径
 网易新闻客户端的选择tab展示是个不错的选择，还得做dragGridview。
 上两个截图：
+
 ![image](https://github.com/zangliguang/DawnLightApp_Test/blob/master/screen_shortcut/S51125-203652.png)
 ![image](https://github.com/zangliguang/DawnLightApp_Test/blob/master/screen_shortcut/S51125-203645.png)
 
